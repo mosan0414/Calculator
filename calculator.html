@@ -1,39 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Calculator</title>
+        <meta name="viewport" content="width=device-width">
+        <title>최용훈의 계산기</title>
+        
         <link rel="stylesheet" href="calculator.css">
         <link href="https://fonts.cdnfonts.com/css/digital-numbers" rel="stylesheet">
+
+        <audio id="audio" src="click.mp3"></audio>
+
         
-        
+
     </head>
+
     <body>
 
-       <div class="calculator">
-         <form class="form">
-            <input type="text" name="output" placeholder="INPUT NUMBERS!">
-            <input type="button" class="clear" value="C">
-            <input type="button" class="operator" value="/">
-            <input type="button" value="1">
-            <input type="button" value="2">
-            <input type="button" value="3">
-            <input type="button" class="operator" value="*">
-            <input type="button" value="4">
-            <input type="button" value="5">
-            <input type="button" value="6">
-            <input type="button" class="operator" value="+">
-            <input type="button" value="7">
-            <input type="button" value="8">
-            <input type="button" value="9">
-            <input type="button" class="operator" value="-">
-            <input type="button" class="dot" value=".">
-            <input type="button" value="0">
-            <input type="button" class="operator result" value="=">
-         </form>
-       </div>
+        
+            <div class="calculator">
+            <form name="forms">
+
+                <!--계산기 화면-->
+                <input type="text" name="output" maxlength="3" readonly> 
+
+
+                <!--계산기 버튼-->
+                <input type="button" id="myButton" class="clear" value="CLEAR" onclick="document.forms.output.value=''">
+                <input type="button" id="myButton" class="operator" value="+" onclick="document.forms.output.value+='+'">
+
+                <input type="button" id="myButton" value="7" onclick="document.forms.output.value+='7'">
+                <input type="button" id="myButton" value="8" onclick="document.forms.output.value+='8'">
+                <input type="button" id="myButton" value="9" onclick="document.forms.output.value+='9'">
+                <input type="button" id="myButton" class="operator" value="-" onclick="document.forms.output.value+='-'">
+
+                <input type="button" id="myButton" value="4" onclick="document.forms.output.value+='4'">
+                <input type="button" id="myButton" value="5" onclick="document.forms.output.value+='5'">
+                <input type="button" id="myButton" value="6" onclick="document.forms.output.value+='6'">
+                <input type="button" id="myButton" class="operator" value="*" onclick="document.forms.output.value+='*'">
+
+                <input type="button" id="myButton" value="1" onclick="document.forms.output.value+='1'">
+                <input type="button" id="myButton" value="2" onclick="document.forms.output.value+='2'">
+                <input type="button" id="myButton" value="3" onclick="document.forms.output.value+='3'">
+                <input type="button" id="myButton" class="operator" value="/" onclick="document.forms.output.value+='/'">
+
+                <input type="button" id="myButton" class="dot"  value="." onclick="document.forms.output.value+='.'">
+                <input type="button" id="myButton" value="0" onclick="document.forms.output.value+='0'">
+                <input type="button" id="myButton" class='erase' value="erse" onclick="document.forms.output.value=document.forms.output.value.slice(0, -1);">
+                <input type="button" id="myButton" class="operator" value="=" onclick="document.forms.output.value=eval(document.forms.output.value);">
+            </form>
+            </div>
+        </form> 
     </body>
 
+
+    <script>
+        // 버튼 요소 가져오기
+        var buttons = document.querySelectorAll("input[type='button']");
+      
+        // 오디오 요소 가져오기
+        var audio = document.getElementById("audio");
+      
+        // 버튼 클릭 시 효과음 재생
+        buttons.forEach(function(button) {
+          button.addEventListener("click", function() {
+            audio.play();
+          });
+        });
+      </script>
 
 </html>
